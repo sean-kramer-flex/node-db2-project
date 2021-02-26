@@ -10,12 +10,13 @@ const getById = (id) => {
   .first()
 }
 
-const create = () => {
-  // DO YOUR MAGIC
+const create = (newCar) => {
+  return db.insert(newCar).into('cars')
 }
 
 
 module.exports = {
   getAll,
   getById,
+  create
 }

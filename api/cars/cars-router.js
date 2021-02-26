@@ -20,12 +20,23 @@ res.json(car)
   }
 })
 
-// router.post('/', async (req, res, next) => {
-//   try {
+router.post('/', async (req, res, next) => {
+  try {
+const [id] = await carsModel.create({
+  vin: req.body.vin,
+  make: req.body.make,
+  model: req.body.model,
+  mileage: req.body.mileage,
+  title: req.body.title,
+  transmission: req.body.transmission
+})
 
-//   } catch (err) {
-//     next(err)
-//   }
-// })
+const newCar = await carsModel.getById(id)
+
+res.status(201).json(newCar)
+  } catch (err) {
+    next(err)
+  }
+})
 
 module.exports = router
