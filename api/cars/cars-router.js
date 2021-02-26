@@ -1,4 +1,5 @@
 const carsModel = require('./cars-model')
+const { checkCarId } = require('./cars-middleware')
 
 const router = require('express').Router()
 
@@ -11,7 +12,7 @@ res.json(data)
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', checkCarId(),async (req, res, next) => {
   try {
 const car = await carsModel.getById(req.params.id)
 res.json(car)
