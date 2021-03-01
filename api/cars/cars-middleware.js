@@ -16,7 +16,7 @@ cars.getById(req.params.id)
 }
 
 const checkCarPayload = (req, res, next) => {
-  // DO YOUR MAGIC
+  
 }
 
 const checkVinNumberValid = (req, res, next) => {
